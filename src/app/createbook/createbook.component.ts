@@ -9,12 +9,15 @@ import { Book } from '../entity/book';
   templateUrl: './createbook.component.html',
   styleUrls: ['./createbook.component.css']
 })
-export class CreatebookComponent implements OnInit {
 
+export class CreatebookComponent implements OnInit {
+  uploadedImage:File;
   book: Book= new Book();
- 
+  public onImageUpload(event){
+  this.uploadedImage=event.target.files[0];
+ }
   save(){
-    const observable = this.bookservice.createBook(this.book);
+    const observable = this.bookservice.createBook(this.book,this.uploadedImage);
     observable.subscribe(
       (response) => {
         console.log(response);

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 const MAIN_URL= "http://localhost:9092/";
@@ -26,8 +27,12 @@ export class BookService {
       logo: string;
       Active: boolean;
      
-    }) {
-    return this.http.post(BASE_URL, book);
+    },uploadedImage:File) {
+      const formData= new FormData();
+      formData.append('bookstring',JSON.stringify(book));
+      formData.append('image',uploadedImage);
+
+       return this.http.post(BASE_URL, formData);
   }
   getBookslist() {
     return this.http.get(MAIN_URL + 'books');
