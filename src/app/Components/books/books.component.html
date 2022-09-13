@@ -1,0 +1,25 @@
+<div class="container-fluid">
+
+<div class="row card-group">
+    <div class="col-md-3" *ngFor="let b of books" >
+          <div class="card mt-2" style="width: 80%;">
+            
+            <div class="card-body ">
+          <mat-card-header>
+            <mat-card-title>{{b.title}}</mat-card-title>
+          </mat-card-header>
+          <img class="card-img mt-2" src={{b.logo}} width="200px" height="150px"  alt="Card image cap">
+               <b><h5 class="card-subtitle mb-2 text-muted"> By {{b.authorname}}</h5></b> 
+              <p class="card-text">{{b.content |slice:50 }} </p>
+            
+              <button type="button" class="btn btn-block mb-4">Buy</button>
+              <button type="button" class="btn btn-block mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button>
+              
+            </div>
+          </div>
+      
+
+    </div>
+</div>
+</div>
+<app-foot></app-foot>
